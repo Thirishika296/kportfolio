@@ -1,40 +1,81 @@
+import { useState } from "react";
 import "./App.css";
 import krishnaPhoto from "./assets/krishna-photo.jpg";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="portfolio">
 
-      {/* ================= NAVBAR ================= */}
-      <header className="navbar">
+     {/* ================= NAVBAR ================= */}
+<header className="navbar">
 
-        <a href="#home" className="logo">
-          <img
-            src={krishnaPhoto}
-            alt="Krishna Kanth"
-            className="nav-photo"
-          />
+  <a href="#home" className="logo">
+    <img
+      src={krishnaPhoto}
+      alt="Krishna Kanth"
+      className="nav-photo"
+    />
 
-          <span>
-            KRISHNA KANTH<span className="gold-dot"></span>
-          </span>
-        </a>
+    <span>
+      KRISHNA KANTH<span className="gold-dot"></span>
+    </span>
+  </a>
 
-        <nav className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
+  {/* DESKTOP NAVIGATION */}
+  <nav className="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-        <a href="#contact" className="nav-button">
-          Contact Me
-        </a>
+  <a href="#contact" className="nav-button">
+    Contact Me
+  </a>
 
-      </header>
+  {/* MOBILE MENU BUTTON */}
+  <button
+    className="mobile-menu-btn"
+    onClick={() => setMenuOpen(!menuOpen)}
+    aria-label="Open navigation menu"
+  >
+    {menuOpen ? "✕" : "☰"}
+  </button>
 
+  {/* MOBILE NAVIGATION */}
+  {menuOpen && (
+    <nav className="mobile-nav">
+      <a href="#home" onClick={() => setMenuOpen(false)}>
+        Home
+      </a>
+
+      <a href="#about" onClick={() => setMenuOpen(false)}>
+        About
+      </a>
+
+      <a href="#skills" onClick={() => setMenuOpen(false)}>
+        Skills
+      </a>
+
+      <a href="#education" onClick={() => setMenuOpen(false)}>
+        Education
+      </a>
+
+      <a href="#projects" onClick={() => setMenuOpen(false)}>
+        Projects
+      </a>
+
+      <a href="#contact" onClick={() => setMenuOpen(false)}>
+        Contact
+      </a>
+    </nav>
+  )}
+
+</header>
 
       {/* ================= HERO ================= */}
       <main>
